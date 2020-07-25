@@ -10,20 +10,30 @@ function readyNow() {
     //xstores it
     //xappends info to dom
     //xclears inputs
-    //using annual salary, calculates MONTHLY salary total cost
-    //append monthly salary to DOM
-    //if monthly costs exceed 20,000, highlight number in red
+    //xusing annual salary, calculates MONTHLY salary total cost
+    //xappend monthly salary to DOM
+    //xif monthly costs exceed 20,000, highlight number in red
 
-    //*********create a delete button for employee objects******
+    //xcreate a delete button for employee objects
 
     //make button click
     $('#submitBtn').on('click', appendToDom);
 
+    //removes employee from employeeArray
+    function deleteEmployee() {
+        console.log('d');
+    }
 
     let employeeArray = [];
 
     function deleteEmployee() {
         $(this).closest('tr').remove();
+
+        for (let i = 0; i < employeeArray.length; i++) {
+            if (employeeArray[i].firstName = $(this).closest('employeeArray.firstName')) {
+                console.log(employeeArray.firstName)
+            }
+        }
     }
 
     function appendToDom() {
@@ -31,8 +41,8 @@ function readyNow() {
         console.log('button working!')
 
         //empty td's
-        $('#bigTable').empty();
 
+        $('#bigTable').empty();
 
         //variable inputs
         const employeeFirstName = $('#firstNameInput').val();
@@ -40,6 +50,12 @@ function readyNow() {
         const employeeId = $('#idInput').val();
         const employeeTitle = $('#titleInput').val();
         const employeeAnnualSalary = $('#annualSalaryInput').val();
+
+        //no empty inputs!
+        if (employeeFirstName === '' || employeeLastName === '' || employeeId === '' || employeeTitle === '' || employeeAnnualSalary === '') {
+            alert('Please fill all input fields!');
+            return false;
+        }
 
         //adding to object array
         let employeeObject = {
@@ -62,7 +78,8 @@ function readyNow() {
         <td class="lastNameSec"> ${employee.lastName} </td>
         <td class="idSec"> ${employee.id} </td>
         <td class="titleSec"> ${employee.title} </td>
-        <td class="annualSalarySec"> ${employee.annualSalary} <button class="deleteSec">Delete</button> </td>
+        <td class="annualSalarySec"> $${employee.annualSalary} </td>
+        <td> <button class="deleteSec">Delete</button> </td>
     </tr>`)
         }
 
@@ -97,14 +114,15 @@ function readyNow() {
 
             $('#monthlyTotal').empty();
 
-            $('#monthlyTotal').append(`<h1 id="possiblyRed">Monthly Total: ${monthlySalaryTotal} </h1>`)
+            $('#monthlyTotal').append(`<h1 class="possiblyRed">Monthly Total: $${monthlySalaryTotal.toFixed(2)} </h1>`)
 
-        if (monthlySalaryTotal > 20000) {
-            console.log('this is working!!')
-            $('#possiblyRed').addClass("isRed");
-        }
-        console.log(monthlySalaryTotal);
-        
+            if (monthlySalaryTotal > 20000) {
+                console.log('this is working!!')
+                $('.possiblyRed').addClass("isRed");
+                $('#monthlyTotal').append(`<h3> $${monthlySalaryTotal.toFixed(2) - 20000} over budget!</h3>`);
+            }
+            console.log(monthlySalaryTotal);
+
 
 
 
@@ -118,5 +136,3 @@ function readyNow() {
 
 
 }
-
-
