@@ -1,7 +1,31 @@
 body {
-    background-color: palegoldenrod
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: white;
+    background-color: #4d4d4d;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 50px;
+    margin-right: 50px
 }
 
 .isRed {
-    background-color: red
+    background-color: darkred;
+    border-radius: 5px
+}
+
+header {
+    background-color: #212529;
+    text-align: center;
+    font-size: 50px;
+    margin-right: 200px;
+    margin-left: 200px;
+    border-radius: 5px
+}
+
+.possiblyRed {
+    float: right
+}
+
+.employeeTable {
+    border: 2px solid black;
 }
